@@ -1,19 +1,106 @@
-# SCARA Alfa
+# SCRA-Nightly
 
-SCARA Alfa is a Laravel 13 application with Filament.
+## Project Description
 
-## Requirements
+SCRA-Nightly is a web-based Classroom Rental Management System designed for universities to manage classroom reservations efficiently. It helps reduce manual scheduling work, prevent booking conflicts, and improve coordination between students, lecturers, staff, and administrators.
 
-- PHP 8.3 or later
-- Composer 2+
-- Node.js 22+ and npm
-- MySQL 8+ or another supported Laravel database
+The system allows:
 
-Official docs:
+- Students to submit classroom reservation requests
+- Lecturers or staff to verify reservations
+- Administrators to manage classrooms, users, reservations, reports, and activity logs
 
-- https://laravel.com/docs/13.x/installation
-- https://laravel.com/docs/13.x/database
-- https://laravel.com/docs/13.x/seeding
+The main objective of the system is to provide a structured, transparent, and reliable classroom booking workflow for academic environments.
+
+This project also includes an optional IoT integration module for future automatic classroom door control. However, the application works fully without any IoT device.
+
+## Key Features
+
+- User authentication 🔐
+- Role-based access control
+- Classroom management
+- Classroom reservation
+- Reservation approval workflow
+- Reservation history
+- Classroom schedule management
+- Activity logging
+- Admin dashboard
+- Responsive interface
+- Optional IoT door integration
+
+## Technology Stack
+
+**Backend**
+- Laravel 11
+- PHP 8.2+
+
+**Frontend**
+- Blade
+- Tailwind CSS
+
+**Admin Panel**
+- Filament 3
+
+**Database**
+- MySQL
+
+**Authentication**
+- Laravel Authentication
+
+**Architecture**
+- MVC
+
+## User Roles
+
+### Admin
+- Manage classrooms
+- Manage users
+- Manage reservations
+- View activity logs
+- Generate reports
+
+### Lecturer / Staff
+- Review reservation requests
+- Approve or reject reservations
+- View classroom schedules
+
+### Student
+- Browse classrooms
+- Check availability
+- Submit reservation requests
+- View reservation history
+- Manage profile
+
+## System Workflow
+
+Student submits reservation  
+↓  
+Staff reviews request  
+↓  
+Reservation approved or rejected  
+↓  
+Student receives reservation status  
+↓  
+Reservation history is stored
+
+## Future Development
+
+- IoT automatic door access
+- QR Code check-in
+- Email notifications
+- Calendar integration
+- Mobile application
+- Advanced reporting
+- API integration
+
+## License
+
+This project is licensed under the MIT License.
+
+## Author
+
+**Developer:** Your Name  
+**GitHub:** https://github.com/ZuanPdana/SCRA  
 
 ## Install
 
