@@ -222,22 +222,6 @@ Reservation reports and statistics.
 
 ## Repository Structure
 
-```text
-docs/
-└── images/
-    ├── login-page.png
-    ├── student-dashboard.png
-    ├── admin-dashboard.png
-    ├── classroom-list.png
-    ├── classroom-details.png
-    ├── reservation-form.png
-    ├── reservation-history.png
-    ├── reservation-verification.png
-    ├── classroom-management.png
-    ├── user-management.png
-    ├── activity-logs.png
-    └── reports.png
-```
 
 ---
 
