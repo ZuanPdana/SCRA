@@ -1,58 +1,234 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SCARA ALFA - Installation Guide
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project is a Laravel 13 + Filament application.
 
-## About Laravel
+## Requirements
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Linux server (Ubuntu 24.04 recommended)
+- PHP 8.3+
+- Composer 2+
+- MySQL 8+
+- Node.js 22+ and npm
+- Nginx
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Required PHP extensions:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- mbstring
+- xml
+- curl
+- zip
+- bcmath
+- gd
+- intl
+- pdo_mysql
+- redis (recommended)
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## 1. Install System Packages (Ubuntu)
 
 ```bash
-composer require laravel/boost --dev
+sudo apt update
+sudo apt install -y nginx mysql-server git unzip curl
 
-php artisan boost:install
+sudo add-apt-repository ppa:ondrej/php -y
+sudo apt update
+sudo apt install -y \
+  php8.3-fpm php8.3-cli php8.3-mysql php8.3-mbstring php8.3-xml \
+  php8.3-curl php8.3-zip php8.3-bcmath php8.3-gd php8.3-intl php8.3-redis
+
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt install -y nodejs
+
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## 2. Clone Project
 
-## Contributing
+```bash
+cd /var/www
+sudo git clone <YOUR_REPOSITORY_URL> scara-alfa
+sudo chown -R $USER:$USER /var/www/scara-alfa
+cd /var/www/scara-alfa
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 3. Install Project Dependencies
 
-## Code of Conduct
+```bash
+composer install --no-dev --optimize-autoloader
+npm install
+npm run build
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 4. Configure Environment
 
-## Security Vulnerabilities
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Edit `.env`:
 
-## License
+```dotenv
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://your-domain.com
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=scra_classroom
+DB_USERNAME=scara_user
+DB_PASSWORD=your_strong_password
+```
+
+## 5. Create Database
+
+```bash
+sudo mysql
+```
+
+Run in MySQL shell:
+
+```sql
+CREATE DATABASE scra_classroom CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'scara_user'@'127.0.0.1' IDENTIFIED BY 'your_strong_password';
+GRANT ALL PRIVILEGES ON scra_classroom.* TO 'scara_user'@'127.0.0.1';
+FLUSH PRIVILEGES;
+EXIT;
+```
+
+## 6. Migrate and Optimize
+
+```bash
+php artisan migrate --force
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+## 7. Set Folder Permissions
+
+```bash
+sudo chown -R www-data:www-data /var/www/scara-alfa
+sudo find /var/www/scara-alfa/storage -type d -exec chmod 775 {} \;
+sudo find /var/www/scara-alfa/bootstrap/cache -type d -exec chmod 775 {} \;
+```
+
+## 8. Configure Nginx
+
+Create `/etc/nginx/sites-available/scara-alfa`:
+
+```nginx
+server {
+	listen 80;
+	server_name your-domain.com www.your-domain.com;
+	root /var/www/scara-alfa/public;
+
+	index index.php index.html;
+	charset utf-8;
+
+	location / {
+		try_files $uri $uri/ /index.php?$query_string;
+	}
+
+	location = /favicon.ico { access_log off; log_not_found off; }
+	location = /robots.txt  { access_log off; log_not_found off; }
+
+	error_page 404 /index.php;
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+	}
+
+	location ~ /\.(?!well-known).* {
+		deny all;
+	}
+}
+```
+
+Enable site:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/scara-alfa /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+## 9. Run Queue Worker (systemd)
+
+This app uses `QUEUE_CONNECTION=database`, so queue worker should run continuously.
+
+Create `/etc/systemd/system/scara-queue.service`:
+
+```ini
+[Unit]
+Description=Scara Laravel Queue Worker
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+Restart=always
+ExecStart=/usr/bin/php /var/www/scara-alfa/artisan queue:work --sleep=3 --tries=3 --max-time=3600
+WorkingDirectory=/var/www/scara-alfa
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Enable service:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now scara-queue
+```
+
+## 10. Add Laravel Scheduler Cron
+
+```bash
+sudo crontab -e
+```
+
+Add this line:
+
+```cron
+* * * * * cd /var/www/scara-alfa && php artisan schedule:run >> /dev/null 2>&1
+```
+
+## 11. Optional: Enable HTTPS
+
+```bash
+sudo apt install -y certbot python3-certbot-nginx
+sudo certbot --nginx -d your-domain.com -d www.your-domain.com
+```
+
+## Local Development
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+npm install
+npm run dev
+php artisan serve
+```
+
+## Useful Commands
+
+```bash
+# Check queue worker
+sudo systemctl status scara-queue
+
+# Restart queue worker after deploy
+sudo systemctl restart scara-queue
+
+# Laravel cache reset
+php artisan optimize:clear
+```
+
+## Notes
+
+- If you deploy updates, run: `git pull`, `composer install --no-dev`, `npm run build`, `php artisan migrate --force`.
+- If using Filament admin, ensure your first admin user exists in database.
