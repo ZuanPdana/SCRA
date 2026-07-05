@@ -108,13 +108,10 @@ Reservation history is stored
 
 ---
 
-## Screenshots
-
-Store all screenshots in `docs/images/`.
-
 ### Login Page
 
-![Login Page](docs/images/login-page.png)
+![Login Page](docs\images\SCRA-DOCS\LOGIN-PAGE\userLogin.png)
+![Admin Login Page](docs\images\SCRA-DOCS\LOGIN-PAGE\adminLogin.png)
 
 Description:  
 User login page.
@@ -123,7 +120,7 @@ User login page.
 
 ### Student Dashboard
 
-![Student Dashboard](docs/images/student-dashboard.png)
+![Student Dashboard](docs\images\SCRA-DOCS\ALL-PAGE\Dashboard.png)
 
 Description:  
 Student dashboard after login.
@@ -132,7 +129,7 @@ Student dashboard after login.
 
 ### Admin Dashboard
 
-![Admin Dashboard](docs/images/admin-dashboard.png)
+![Admin Dashboard](docs\images\SCRA-DOCS\ADMIN-PAGE\adminDashboard.png)
 
 Description:  
 Administrator dashboard displaying system statistics.
@@ -141,7 +138,7 @@ Administrator dashboard displaying system statistics.
 
 ### Classroom List
 
-![Classroom List](docs/images/classroom-list.png)
+![Classroom List](docs/images/SCRA-DOCS/ALL-PAGE/classroomStatus.png)
 
 Description:  
 Available classrooms displayed to users.
@@ -150,7 +147,7 @@ Available classrooms displayed to users.
 
 ### Classroom Details
 
-![Classroom Details](docs/images/classroom-details.png)
+![Classroom Details](docs\images\SCRA-DOCS\ALL-PAGE\classroomDetails.png)
 
 Description:  
 Detailed information about a selected classroom.
@@ -159,7 +156,7 @@ Detailed information about a selected classroom.
 
 ### Reservation Form
 
-![Reservation Form](docs/images/reservation-form.png)
+![Reservation Form](docs\images\SCRA-DOCS\ALL-PAGE\reservDetails.png)
 
 Description:  
 Form for creating a classroom reservation.
@@ -168,7 +165,7 @@ Form for creating a classroom reservation.
 
 ### Reservation History
 
-![Reservation History](docs/images/reservation-history.png)
+![Reservation History](docs\images\SCRA-DOCS\ALL-PAGE\reservHistory.png)
 
 Description:  
 User reservation history.
@@ -177,7 +174,7 @@ User reservation history.
 
 ### Reservation Verification
 
-![Reservation Verification](docs/images/reservation-verification.png)
+![Reservation Verification](docs\images\SCRA-DOCS\ALL-PAGE\dosenVerif.png)
 
 Description:  
 Staff approval and rejection page.
@@ -186,7 +183,7 @@ Staff approval and rejection page.
 
 ### Classroom Management
 
-![Classroom Management](docs/images/classroom-management.png)
+![Classroom Management](docs\images\SCRA-DOCS\ADMIN-PAGE\adminClassManage.png)
 
 Description:  
 Admin page for managing classrooms.
@@ -195,7 +192,7 @@ Admin page for managing classrooms.
 
 ### User Management
 
-![User Management](docs/images/user-management.png)
+![User Management](docs\images\SCRA-DOCS\ADMIN-PAGE\adminUserManage.png)
 
 Description:  
 Admin page for managing users.
@@ -204,24 +201,10 @@ Admin page for managing users.
 
 ### Activity Logs
 
-![Activity Logs](docs/images/activity-logs.png)
+![Activity Logs](docs\images\SCRA-DOCS\ADMIN-PAGE\adminLog.png)
 
 Description:  
 Admin page showing activity logs.
-
----
-
-### Reports
-
-![Reports](docs/images/reports.png)
-
-Description:  
-Reservation reports and statistics.
-
----
-
-## Repository Structure
-
 
 ---
 
@@ -247,7 +230,6 @@ This project is licensed under the MIT License.
 
 **Developer:** Your Name  
 **GitHub:** https://github.com/ZuanPdana/SCRA  
-**Email:** your-email@example.com
 
 ## Install
 
