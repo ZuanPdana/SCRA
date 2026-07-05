@@ -1,234 +1,109 @@
-# SCARA ALFA - Installation Guide
+# SCARA Alfa
 
-This project is a Laravel 13 + Filament application.
+SCARA Alfa is a Laravel 13 application with Filament.
 
 ## Requirements
 
-- Linux server (Ubuntu 24.04 recommended)
-- PHP 8.3+
+- PHP 8.3 or later
 - Composer 2+
-- MySQL 8+
 - Node.js 22+ and npm
-- Nginx
+- MySQL 8+ or another supported Laravel database
 
-Required PHP extensions:
+Official docs:
 
-- mbstring
-- xml
-- curl
-- zip
-- bcmath
-- gd
-- intl
-- pdo_mysql
-- redis (recommended)
+- https://laravel.com/docs/13.x/installation
+- https://laravel.com/docs/13.x/database
+- https://laravel.com/docs/13.x/seeding
 
-## 1. Install System Packages (Ubuntu)
+## Install
 
 ```bash
-sudo apt update
-sudo apt install -y nginx mysql-server git unzip curl
-
-sudo add-apt-repository ppa:ondrej/php -y
-sudo apt update
-sudo apt install -y \
-  php8.3-fpm php8.3-cli php8.3-mysql php8.3-mbstring php8.3-xml \
-  php8.3-curl php8.3-zip php8.3-bcmath php8.3-gd php8.3-intl php8.3-redis
-
-curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
-sudo apt install -y nodejs
-
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
-```
-
-## 2. Clone Project
-
-```bash
-cd /var/www
-sudo git clone <YOUR_REPOSITORY_URL> scara-alfa
-sudo chown -R $USER:$USER /var/www/scara-alfa
-cd /var/www/scara-alfa
-```
-
-## 3. Install Project Dependencies
-
-```bash
-composer install --no-dev --optimize-autoloader
+git clone <repository-url>
+cd scara-alfa
+composer install
 npm install
-npm run build
-```
-
-## 4. Configure Environment
-
-```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-Edit `.env`:
+For local development, Laravel recommends:
 
-```dotenv
-APP_ENV=production
-APP_DEBUG=false
-APP_URL=https://your-domain.com
+```bash
+composer run dev
+```
 
+This starts the app server, queue worker, and Vite dev server.
+
+## Configure the database
+
+This project uses MySQL by default in `.env.example`.
+
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=scra_classroom
-DB_USERNAME=scara_user
-DB_PASSWORD=your_strong_password
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
-## 5. Create Database
-
-```bash
-sudo mysql
-```
-
-Run in MySQL shell:
+Create the database before running migrations:
 
 ```sql
 CREATE DATABASE scra_classroom CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'scara_user'@'127.0.0.1' IDENTIFIED BY 'your_strong_password';
-GRANT ALL PRIVILEGES ON scra_classroom.* TO 'scara_user'@'127.0.0.1';
-FLUSH PRIVILEGES;
-EXIT;
 ```
 
-## 6. Migrate and Optimize
+Update the same values in `.env` if your username, password, or database name are different.
+
+## Migrate
+
+Run all database migrations:
 
 ```bash
-php artisan migrate --force
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-```
-
-## 7. Set Folder Permissions
-
-```bash
-sudo chown -R www-data:www-data /var/www/scara-alfa
-sudo find /var/www/scara-alfa/storage -type d -exec chmod 775 {} \;
-sudo find /var/www/scara-alfa/bootstrap/cache -type d -exec chmod 775 {} \;
-```
-
-## 8. Configure Nginx
-
-Create `/etc/nginx/sites-available/scara-alfa`:
-
-```nginx
-server {
-	listen 80;
-	server_name your-domain.com www.your-domain.com;
-	root /var/www/scara-alfa/public;
-
-	index index.php index.html;
-	charset utf-8;
-
-	location / {
-		try_files $uri $uri/ /index.php?$query_string;
-	}
-
-	location = /favicon.ico { access_log off; log_not_found off; }
-	location = /robots.txt  { access_log off; log_not_found off; }
-
-	error_page 404 /index.php;
-
-	location ~ \.php$ {
-		include snippets/fastcgi-php.conf;
-		fastcgi_pass unix:/run/php/php8.3-fpm.sock;
-	}
-
-	location ~ /\.(?!well-known).* {
-		deny all;
-	}
-}
-```
-
-Enable site:
-
-```bash
-sudo ln -s /etc/nginx/sites-available/scara-alfa /etc/nginx/sites-enabled/
-sudo nginx -t
-sudo systemctl reload nginx
-```
-
-## 9. Run Queue Worker (systemd)
-
-This app uses `QUEUE_CONNECTION=database`, so queue worker should run continuously.
-
-Create `/etc/systemd/system/scara-queue.service`:
-
-```ini
-[Unit]
-Description=Scara Laravel Queue Worker
-After=network.target
-
-[Service]
-User=www-data
-Group=www-data
-Restart=always
-ExecStart=/usr/bin/php /var/www/scara-alfa/artisan queue:work --sleep=3 --tries=3 --max-time=3600
-WorkingDirectory=/var/www/scara-alfa
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Enable service:
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable --now scara-queue
-```
-
-## 10. Add Laravel Scheduler Cron
-
-```bash
-sudo crontab -e
-```
-
-Add this line:
-
-```cron
-* * * * * cd /var/www/scara-alfa && php artisan schedule:run >> /dev/null 2>&1
-```
-
-## 11. Optional: Enable HTTPS
-
-```bash
-sudo apt install -y certbot python3-certbot-nginx
-sudo certbot --nginx -d your-domain.com -d www.your-domain.com
-```
-
-## Local Development
-
-```bash
-composer install
-cp .env.example .env
-php artisan key:generate
 php artisan migrate
-npm install
-npm run dev
+```
+
+If you want to rebuild the database from scratch:
+
+```bash
+php artisan migrate:fresh
+```
+
+## Seed
+
+The default seeder runs:
+
+- `RoleSeeder`
+- `UserSeeder`
+- `ClassroomSeeder`
+
+Seed the database:
+
+```bash
+php artisan db:seed
+```
+
+Reset and seed in one command:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+## Run locally
+
+```bash
 php artisan serve
 ```
 
-## Useful Commands
+In another terminal, if you are not using `composer run dev`, start Vite manually:
 
 ```bash
-# Check queue worker
-sudo systemctl status scara-queue
-
-# Restart queue worker after deploy
-sudo systemctl restart scara-queue
-
-# Laravel cache reset
-php artisan optimize:clear
+npm run dev
 ```
 
-## Notes
+## Production build
 
-- If you deploy updates, run: `git pull`, `composer install --no-dev`, `npm run build`, `php artisan migrate --force`.
-- If using Filament admin, ensure your first admin user exists in database.
+```bash
+npm run build
+php artisan optimize
+```
