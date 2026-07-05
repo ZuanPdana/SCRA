@@ -27,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('SCRA Nightly')
+            ->brandName('SCRA')
             ->colors([
                 'primary' => Color::Blue,
             ])
