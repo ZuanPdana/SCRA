@@ -101,7 +101,7 @@ Proyek ini juga mencakup modul integrasi IoT opsional untuk kontrol pintu ruang 
 
 ---
 
-## 1️⃣ **ALUR KERJA MAHASISWA**
+## **ALUR KERJA MAHASISWA**
 
 ### Langkah 1: Login ke Aplikasi
 Mahasiswa mengakses halaman login dan memasukkan kredensial mereka.
@@ -169,7 +169,7 @@ Login → Dashboard → Jelajahi Ruang Kelas → Lihat Detail → Periksa Jadwal
 
 ---
 
-## 2️⃣ **ALUR KERJA DOSEN/STAF**
+## **ALUR KERJA DOSEN/STAF**
 
 ### Langkah 1: Login ke Aplikasi
 Dosen dan staf mengakses halaman login dengan kredensial mereka.
@@ -233,7 +233,7 @@ Login → Dashboard → Tinjau Permintaan Tertunda → Periksa Ruang Kelas & Jad
 
 ---
 
-## 3️⃣ **ALUR KERJA ADMINISTRATOR**
+## **ALUR KERJA ADMINISTRATOR**
 
 ### Langkah 1: Login ke Panel Admin
 Administrator mengakses sistem dengan kredensial admin.
@@ -332,11 +332,7 @@ Login → Dashboard → Kelola Pengguna → Kelola Ruang Kelas → Kelola Peminj
 
 ---
 
-## Lisensi
-
-Proyek ini dilisensikan di bawah Lisensi MIT.
-
----
+## Link
 
 **GitHub:** https://github.com/ZuanPdana/SCRA  
 
