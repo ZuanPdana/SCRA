@@ -1,14 +1,10 @@
-# SCRA-Nightly
-
-## Judul Proyek
-
-SCRA-Nightly
+# SCRA
 
 ---
 
 ## Deskripsi Proyek
 
-SCRA-Nightly adalah Sistem Manajemen Peminjaman Ruang Kelas berbasis web untuk universitas yang membantu mengelola reservasi ruang kelas secara efisien. Sistem ini dirancang untuk mengurangi penjadwalan manual, mencegah pemesanan ganda, dan menyederhanakan proses reservasi di seluruh mahasiswa, dosen, staf, dan administrator.
+SCRA adalah Sistem Manajemen Peminjaman Ruang Kelas berbasis web untuk universitas yang membantu mengelola reservasi ruang kelas secara efisien. Sistem ini dirancang untuk mengurangi penjadwalan manual, mencegah pemesanan ganda, dan menyederhanakan proses reservasi di seluruh mahasiswa, dosen, staf, dan administrator.
 
 Sistem ini memungkinkan:
 
