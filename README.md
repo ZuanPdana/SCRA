@@ -1,44 +1,45 @@
 # SCRA-Nightly
 
-## Project Title
+## Judul Proyek
 
 SCRA-Nightly
 
 ---
 
-## Project Description
+## Deskripsi Proyek
 
-SCRA-Nightly is a web-based Classroom Rental Management System for universities that helps manage classroom reservations efficiently. It is designed to reduce manual scheduling, prevent double bookings, and streamline the reservation process across students, lecturers, staff, and administrators.
+SCRA-Nightly adalah Sistem Manajemen Peminjaman Ruang Kelas berbasis web untuk universitas yang membantu mengelola reservasi ruang kelas secara efisien. Sistem ini dirancang untuk mengurangi penjadwalan manual, mencegah pemesanan ganda, dan menyederhanakan proses reservasi di seluruh mahasiswa, dosen, staf, dan administrator.
 
-The system allows:
+Sistem ini memungkinkan:
 
-- Students to submit classroom reservation requests
-- Lecturers or staff to verify reservations
-- Administrators to manage classrooms, users, reservations, reports, and activity logs
+- Mahasiswa mengajukan permintaan peminjaman ruang kelas
+- Dosen atau staf memverifikasi peminjaman
+- Administrator mengelola ruang kelas, pengguna, peminjaman, laporan, dan log aktivitas
 
-The main objective of the system is to provide a structured, transparent, and reliable classroom booking workflow for academic environments.
+Tujuan utama sistem ini adalah menyediakan alur kerja pemesanan ruang kelas yang terstruktur, transparan, dan dapat diandalkan untuk lingkungan akademik.
 
-This project also includes an optional IoT integration module for future automatic classroom door control. However, the application works perfectly without any IoT device.
+Proyek ini juga mencakup modul integrasi IoT opsional untuk kontrol pintu ruang kelas otomatis di masa depan. Namun, aplikasi berfungsi dengan sempurna tanpa perangkat IoT apa pun.
 
----
-
-## Features
-
-- User authentication 🔐
-- Role-based access control
-- Classroom management
-- Classroom reservation
-- Reservation approval workflow
-- Reservation history
-- Classroom schedule management
-- Activity logging
-- Admin dashboard
-- Responsive interface
-- Optional IoT door integration
 
 ---
 
-## Technology Stack
+## Fitur
+
+- Autentikasi Pengguna 🔐
+- Kontrol Akses Berbasis Peran
+- Manajemen Ruang Kelas
+- Peminjaman Ruang Kelas
+- Alur Kerja Persetujuan Peminjaman
+- Riwayat Peminjaman
+- Manajemen Jadwal Ruang Kelas
+- Pencatatan Aktivitas
+- Dashboard Administrator
+- Antarmuka Responsif
+- Integrasi Pintu IoT Opsional
+
+---
+
+## Stack Teknologi
 
 **Backend**
 
@@ -50,7 +51,7 @@ This project also includes an optional IoT integration module for future automat
 - Blade
 - Tailwind CSS
 
-**Admin Panel**
+**Panel Admin**
 
 - Filament 3
 
@@ -58,180 +59,288 @@ This project also includes an optional IoT integration module for future automat
 
 - MySQL
 
-**Authentication**
+**Autentikasi**
 
-- Laravel Authentication
+- Autentikasi Laravel
 
-**Architecture**
+**Arsitektur**
 
 - MVC
 
 ---
 
-## User Roles
+## Peran Pengguna
 
 ### Admin
 
-- Manage classrooms
-- Manage users
-- Manage reservations
-- View activity logs
-- Generate reports
+- Mengelola ruang kelas
+- Mengelola pengguna
+- Mengelola peminjaman
+- Melihat log aktivitas
+- Membuat laporan
 
-### Lecturer / Staff
+### Dosen / Staf
 
-- Review reservation requests
-- Approve or reject reservations
-- View classroom schedules
+- Meninjau permintaan peminjaman
+- Menyetujui atau menolak peminjaman
+- Melihat jadwal ruang kelas
 
-### Student
+### Mahasiswa
 
-- Browse classrooms
-- Check availability
-- Submit reservation requests
-- View reservation history
-- Manage profile
-
----
-
-## System Workflow
-
-Student submits reservation  
-↓  
-Staff reviews request  
-↓  
-Reservation approved or rejected  
-↓  
-Student receives reservation status  
-↓  
-Reservation history is stored
+- Menjelajahi ruang kelas
+- Memeriksa ketersediaan
+- Mengajukan permintaan peminjaman
+- Melihat riwayat peminjaman
+- Mengelola profil
 
 ---
 
-### Login Page
+## Alur Kerja Sistem
 
-![Login Page](docs\images\SCRA-DOCS\LOGIN-PAGE\userLogin.png)
-![Admin Login Page](docs\images\SCRA-DOCS\LOGIN-PAGE\adminLogin.png)
-
-Description:  
-User login page.
+### Alur Penggunaan Langkah demi Langkah dengan Tangkapan Layar
 
 ---
 
-### Student Dashboard
+## 1️⃣ **ALUR KERJA MAHASISWA**
 
-![Student Dashboard](docs\images\SCRA-DOCS\ALL-PAGE\Dashboard.png)
+### Langkah 1: Login ke Aplikasi
+Mahasiswa mengakses halaman login dan memasukkan kredensial mereka.
 
-Description:  
-Student dashboard after login.
-
----
-
-### Admin Dashboard
-
-![Admin Dashboard](docs\images\SCRA-DOCS\ADMIN-PAGE\adminDashboard.png)
-
-Description:  
-Administrator dashboard displaying system statistics.
+![Login Mahasiswa](docs/images/SCRA-DOCS/LOGIN-PAGE/userLogin.png)
 
 ---
 
-### Classroom List
+### Langkah 2: Melihat Dashboard
+Setelah login, mahasiswa melihat dashboard yang dipersonalisasi dengan status peminjaman mereka.
 
-![Classroom List](docs/images/SCRA-DOCS/ALL-PAGE/classroomStatus.png)
-
-Description:  
-Available classrooms displayed to users.
+![Dashboard Mahasiswa](docs/images/SCRA-DOCS/ALL-PAGE/Mahasiswa/Dashboard.png)
 
 ---
 
-### Classroom Details
+### Langkah 3: Melihat Status Ruang Kelas
+Mahasiswa dapat memeriksa status ruang kelas yang tersedia.
 
-![Classroom Details](docs\images\SCRA-DOCS\ALL-PAGE\classroomDetails.png)
-
-Description:  
-Detailed information about a selected classroom.
+![Status Ruang Kelas](docs/images/SCRA-DOCS/ALL-PAGE/Mahasiswa/classroomStatus.png)
 
 ---
 
-### Reservation Form
+### Langkah 4: Melihat Detail Ruang Kelas
+Mahasiswa memilih ruang kelas untuk melihat informasi detail (kapasitas, fasilitas, lokasi, dll.).
 
-![Reservation Form](docs\images\SCRA-DOCS\ALL-PAGE\reservDetails.png)
-
-Description:  
-Form for creating a classroom reservation.
+![Detail Ruang Kelas](docs/images/SCRA-DOCS/ALL-PAGE/Mahasiswa/classroomDetails.png)
 
 ---
 
-### Reservation History
+### Langkah 5: Periksa Jadwal & Ketersediaan
+Mahasiswa melihat jadwal kelas dan jadwal mata kuliah untuk menemukan slot waktu yang tersedia.
 
-![Reservation History](docs\images\SCRA-DOCS\ALL-PAGE\reservHistory.png)
+![Jadwal Kelas](docs/images/SCRA-DOCS/ALL-PAGE/Mahasiswa/jadwalKelas.png)
 
-Description:  
-User reservation history.
-
----
-
-### Reservation Verification
-
-![Reservation Verification](docs\images\SCRA-DOCS\ALL-PAGE\dosenVerif.png)
-
-Description:  
-Staff approval and rejection page.
+![Jadwal Mata Kuliah](docs/images/SCRA-DOCS/ALL-PAGE/Mahasiswa/jadwalMataKuliah.png)
 
 ---
 
-### Classroom Management
+### Langkah 6: Ajukan Permintaan Peminjaman
+Mahasiswa mengisi formulir peminjaman dengan:
+- Pemilihan ruang kelas
+- Tanggal dan waktu peminjaman
+- Tujuan peminjaman
+- Informasi mata kuliah
 
-![Classroom Management](docs\images\SCRA-DOCS\ADMIN-PAGE\adminClassManage.png)
+![Formulir Detail Peminjaman](docs/images/SCRA-DOCS/ALL-PAGE/Mahasiswa/reservDetails.png)
 
-Description:  
-Admin page for managing classrooms.
-
----
-
-### User Management
-
-![User Management](docs\images\SCRA-DOCS\ADMIN-PAGE\adminUserManage.png)
-
-Description:  
-Admin page for managing users.
+![Detail Peminjaman Terpilih](docs/images/SCRA-DOCS/ALL-PAGE/Mahasiswa/detailReservasi.png)
 
 ---
 
-### Activity Logs
+### Langkah 7: Lihat Status & Riwayat
+Mahasiswa dapat melacak status peminjaman mereka dan melihat riwayat peminjaman lengkap mereka.
 
-![Activity Logs](docs\images\SCRA-DOCS\ADMIN-PAGE\adminLog.png)
+![Status Dashboard](docs/images/SCRA-DOCS/ALL-PAGE/Mahasiswa/dashboardStatusMahasiswa.png)
 
-Description:  
-Admin page showing activity logs.
-
----
-
-## Future Development
-
-- IoT automatic door access
-- QR Code check-in
-- Email notifications
-- Calendar integration
-- Mobile application
-- Advanced reporting
-- API integration
+![Riwayat Peminjaman](docs/images/SCRA-DOCS/ALL-PAGE/Mahasiswa/reservHistory.png)
 
 ---
 
-## License
-
-This project is licensed under the MIT License.
+### Ringkasan Alur Mahasiswa
+```
+Login → Dashboard → Jelajahi Ruang Kelas → Lihat Detail → Periksa Jadwal → Ajukan Permintaan → Lacak Status
+```
 
 ---
 
-## Author
+## 2️⃣ **ALUR KERJA DOSEN/STAF**
 
-**Developer:** Your Name  
+### Langkah 1: Login ke Aplikasi
+Dosen dan staf mengakses halaman login dengan kredensial mereka.
+
+![Login Dosen](docs/images/SCRA-DOCS/LOGIN-PAGE/userLogin.png)
+
+---
+
+### Langkah 2: Melihat Dashboard
+Dosen melihat dashboard mereka yang dipersonalisasi dengan permintaan peminjaman yang tertunda.
+
+![Dashboard Dosen](docs/images/SCRA-DOCS/ALL-PAGE/Dosen/dashboardDosen.png)
+
+---
+
+### Langkah 3: Melihat Status Ruang Kelas
+Dosen dapat memeriksa status semua ruang kelas.
+
+![Status Ruang Kelas Dosen](docs/images/SCRA-DOCS/ALL-PAGE/Dosen/dashboardStatusDosen.png)
+
+---
+
+### Langkah 4: Melihat Detail Ruang Kelas
+Dosen meninjau informasi detail tentang ruang kelas sebelum menyetujui peminjaman.
+
+![Detail Ruang Kelas Dosen](docs/images/SCRA-DOCS/ALL-PAGE/Dosen/classroomDetailDosen.png)
+
+---
+
+### Langkah 5: Tinjau Peminjaman yang Tertunda
+Dosen melihat semua permintaan peminjaman yang tertunda dari mahasiswa.
+
+![Peminjaman Dosen](docs/images/SCRA-DOCS/ALL-PAGE/Dosen/dosenReservation.png)
+
+---
+
+### Langkah 6: Verifikasi & Setujui/Tolak Permintaan
+Dosen meninjau permintaan mahasiswa dan membuat keputusan persetujuan berdasarkan:
+- Ketersediaan ruang kelas
+- Konflik waktu
+- Informasi mahasiswa
+- Keselarasan mata kuliah
+
+![Verifikasi Dosen](docs/images/SCRA-DOCS/ALL-PAGE/Dosen/dosenVerif.png)
+
+---
+
+### Langkah 7: Lihat Jadwal Mata Kuliah & Kelas
+Dosen dapat merujuk jadwal mata kuliah dan jadwal kelas saat membuat keputusan.
+
+![Jadwal Mata Kuliah Dosen](docs/images/SCRA-DOCS/ALL-PAGE/Dosen/jadwalMataKuliahDosen.png)
+
+![Jadwal Kelas Dosen](docs/images/SCRA-DOCS/ALL-PAGE/Dosen/jadwalKelasDosen.png)
+
+---
+
+### Ringkasan Alur Dosen/Staf
+```
+Login → Dashboard → Tinjau Permintaan Tertunda → Periksa Ruang Kelas & Jadwal → Setujui/Tolak → Mahasiswa Diberitahu
+```
+
+---
+
+## 3️⃣ **ALUR KERJA ADMINISTRATOR**
+
+### Langkah 1: Login ke Panel Admin
+Administrator mengakses sistem dengan kredensial admin.
+
+![Login Admin](docs/images/SCRA-DOCS/LOGIN-PAGE/adminLogin.png)
+
+---
+
+### Langkah 2: Lihat Dashboard Admin
+Administrator melihat dashboard utama dengan statistik sistem dan ikhtisar.
+
+![Dashboard Admin](docs/images/SCRA-DOCS/ADMIN-PAGE/adminDashboard.png)
+
+---
+
+### Langkah 3: Kelola Pengguna
+Administrator dapat:
+- Menambah pengguna baru
+- Mengedit informasi pengguna
+- Menetapkan peran (Mahasiswa, Dosen, Admin)
+- Menghapus pengguna
+
+![Manajemen Pengguna](docs/images/SCRA-DOCS/ADMIN-PAGE/adminUserManage.png)
+
+![Buat Pengguna](docs/images/SCRA-DOCS/ADMIN-PAGE/createUser.png)
+
+---
+
+### Langkah 4: Kelola Ruang Kelas
+Administrator menangani semua operasi ruang kelas:
+- Menambah ruang kelas baru
+- Memperbarui informasi ruang kelas
+- Menetapkan kapasitas dan fasilitas
+- Menghapus ruang kelas
+
+![Manajemen Ruang Kelas](docs/images/SCRA-DOCS/ADMIN-PAGE/adminClassManage.png)
+
+![Buat Ruang Kelas](docs/images/SCRA-DOCS/ADMIN-PAGE/createClass.png)
+
+---
+
+### Langkah 5: Kelola Peminjaman
+Administrator memiliki kontrol penuh atas semua peminjaman:
+- Melihat semua peminjaman
+- Membuat peminjaman manual
+- Mengganti pemesanan jika diperlukan
+- Mengelola kasus khusus
+
+![Manajemen Peminjaman](docs/images/SCRA-DOCS/ADMIN-PAGE/adminReservation.png)
+
+![Buat Peminjaman](docs/images/SCRA-DOCS/ADMIN-PAGE/createReservation.png)
+
+---
+
+### Langkah 6: Kelola Jadwal
+Administrator mengelola berbagai jadwal:
+- Jadwal mata kuliah
+- Jadwal kelas
+- Jadwal hari libur
+
+![Manajemen Jadwal Mata Kuliah](docs/images/SCRA-DOCS/ADMIN-PAGE/createJadwalMatkul.png)
+
+![Jadwal Mata Kuliah](docs/images/SCRA-DOCS/ADMIN-PAGE/jadwalMatkul.png)
+
+![Jadwal Kelas](docs/images/SCRA-DOCS/ADMIN-PAGE/jadwalSewa.png)
+
+![Manajemen Hari Libur](docs/images/SCRA-DOCS/ADMIN-PAGE/createHariLibur.png)
+
+![Jadwal Hari Libur](docs/images/SCRA-DOCS/ADMIN-PAGE/hariLibur.png)
+
+---
+
+### Langkah 7: Lihat Log Aktivitas
+Administrator memantau semua aktivitas sistem untuk tujuan audit dan pemecahan masalah.
+
+![Log Aktivitas](docs/images/SCRA-DOCS/ADMIN-PAGE/adminLog.png)
+
+---
+
+### Ringkasan Alur Administrator
+```
+Login → Dashboard → Kelola Pengguna → Kelola Ruang Kelas → Kelola Peminjaman → Kelola Jadwal → Lihat Log
+```
+
+---
+
+## Pengembangan Masa Depan
+
+- Akses pintu otomatis IoT
+- Absensi dengan QR Code
+- Notifikasi Email
+- Integrasi Kalender
+- Aplikasi Mobile
+- Pelaporan Lanjutan
+- Integrasi API
+
+---
+
+## Lisensi
+
+Proyek ini dilisensikan di bawah Lisensi MIT.
+
+---
+
 **GitHub:** https://github.com/ZuanPdana/SCRA  
 
-## Install
+## Instalasi
 
 ```bash
 git clone <repository-url>
@@ -242,17 +351,17 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-For local development, Laravel recommends:
+Untuk pengembangan lokal, Laravel merekomendasikan:
 
 ```bash
 composer run dev
 ```
 
-This starts the app server, queue worker, and Vite dev server.
+Ini memulai server aplikasi, worker antrian, dan server dev Vite.
 
-## Configure the database
+## Konfigurasi Database
 
-This project uses MySQL by default in `.env.example`.
+Proyek ini menggunakan MySQL secara default di `.env.example`.
 
 ```env
 DB_CONNECTION=mysql
@@ -263,23 +372,23 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Create the database before running migrations:
+Buat database sebelum menjalankan migrasi:
 
 ```sql
 CREATE DATABASE scra_classroom CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-Update the same values in `.env` if your username, password, or database name are different.
+Perbarui nilai yang sama di `.env` jika nama pengguna, kata sandi, atau nama database Anda berbeda.
 
-## Migrate
+## Migrasi
 
-Run all database migrations:
+Jalankan semua migrasi database:
 
 ```bash
 php artisan migrate
 ```
 
-If you want to rebuild the database from scratch:
+Jika Anda ingin membangun kembali database dari awal:
 
 ```bash
 php artisan migrate:fresh
@@ -287,37 +396,37 @@ php artisan migrate:fresh
 
 ## Seed
 
-The default seeder runs:
+Seeder default menjalankan:
 
 - `RoleSeeder`
 - `UserSeeder`
 - `ClassroomSeeder`
 
-Seed the database:
+Seed database:
 
 ```bash
 php artisan db:seed
 ```
 
-Reset and seed in one command:
+Reset dan seed dalam satu perintah:
 
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-## Run locally
+## Jalankan Secara Lokal
 
 ```bash
 php artisan serve
 ```
 
-In another terminal, if you are not using `composer run dev`, start Vite manually:
+Di terminal lain, jika Anda tidak menggunakan `composer run dev`, mulai Vite secara manual:
 
 ```bash
 npm run dev
 ```
 
-## Production build
+## Build Produksi
 
 ```bash
 npm run build
